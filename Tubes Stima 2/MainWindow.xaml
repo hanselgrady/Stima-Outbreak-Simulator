@@ -34,7 +34,7 @@
         <Button x:Name="Clear" Content="Clear" HorizontalAlignment="Left" Height="76" Margin="421,451,0,0" VerticalAlignment="Top" Width="197" FontSize="24" Click="Button_Click" FontFamily="Kozuka Mincho Pro H"/>
         <Button x:Name="Credits" Content="Credits" HorizontalAlignment="Left" Height="76" Margin="737,450,0,0" VerticalAlignment="Top" Width="197" FontSize="24" FontFamily="Kozuka Mincho Pro H" Click="Credits_Click"/>
         <Label Content="Jumlah Hari :" HorizontalAlignment="Left" Height="50" Margin="8,319,0,0" VerticalAlignment="Top" Width="228" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="24" TextOptions.TextFormattingMode="Display" Foreground="White"/>
-        <TextBox x:Name="Query" HorizontalAlignment="Left" Height="42" Margin="12,380,0,0" Text="Jumlah Hari&#xA;" VerticalAlignment="Top" Width="1001" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti"/>
+        <TextBox x:Name="Query" HorizontalAlignment="Left" Height="42" Margin="12,380,0,0" VerticalAlignment="Top" Width="1001" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti"/>
         <Rectangle Fill="Black" HorizontalAlignment="Left" Height="8" Margin="11,367,0,0" VerticalAlignment="Top" Width="1003"/>
 
     </Grid>

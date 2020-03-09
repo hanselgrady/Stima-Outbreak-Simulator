@@ -90,7 +90,7 @@ namespace Tubes_Stima_2
             // BUAT ANTRIAN SIMPUL HIDUP
             ArrayList queue = new ArrayList();
             // BUAT ANTRIAN HUBUNGAN KOTA YANG BERHASIL DISEBAR
-            ArrayList check = new ArrayList();
+            Dictionary<string, int> check = new Dictionary<string, int>();
 
             // FILE 1 : PETA SELURUH DUNIA
             string line;
@@ -157,30 +157,32 @@ namespace Tubes_Stima_2
                 source = temp1.Split('>')[0];
                 target = temp1.Split('>')[1];
                 queue.RemoveAt(0);
-                // KALAU TARGET BELUM TERINFEKSI
                 // CARI APAKAH AKAN TERSEBAR
                 int populasi = jumlah[source];
                 int totalhari = days - waktu[source];
                 float prob = peluang[temp1];
                 // KALAU TERSEBAR
-                if ((float)populasi / (float)(1 + (populasi - 1) * Math.Pow(Math.E, -2.5 * totalhari)) * prob > 1)
+                if ((float)populasi * prob / (1 + (populasi - 1) * Math.Pow(Math.E, -0.25 * totalhari)) > 1)
                 {
-                    check.Add(temp1);
+                    // KALAU TARGET BELUM TERINFEKSI
                     // CARI KAPAN PENYEBARANNYA
                     int waktusampai = 1;
-                    while ((float)populasi / (float)(1 + (populasi - 1) * Math.Pow(Math.E, -2.5 * waktusampai)) * prob <= 1)
+                    while ((float)populasi * prob / (1 + (populasi - 1) * Math.Pow(Math.E, -0.25 * waktusampai)) <= 1)
                     {
                         waktusampai++;
                     }
+                    check.Add(temp1, waktusampai);
                     // TAMBAHKAN ELEMEN
-                    waktu[target] = waktu[source] + waktusampai;
-                    foreach (KeyValuePair<string, float> entry in peluang)
-                    {
-                        // CEK KALO ADA YG SESUAI
-                        if (entry.Key.Split('>')[0] == target)
+                    if (waktu[target] == -999) {
+                        waktu[target] = waktu[source] + waktusampai;
+                        foreach (KeyValuePair<string, float> entry in peluang)
                         {
-                            // MASUKKIN KE QUEUE KALO SESUAI
-                            queue.Add(entry.Key);
+                            // CEK KALO ADA YG SESUAI
+                            if (entry.Key.Split('>')[0] == target)
+                            {
+                                // MASUKKIN KE QUEUE KALO SESUAI
+                                queue.Add(entry.Key);
+                            }
                         }
                     }
                 }
@@ -199,11 +201,12 @@ namespace Tubes_Stima_2
                     // JIKA KOTA SUDAH TERINFEKSI, BERI WARNA MERAH
                     graf.AddNode(entry.Key).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
                 }
+                graf.FindNode(entry.Key).Attr.Shape = Microsoft.Msagl.Drawing.Shape.Circle;
             }
             // BERI PANAH YANG MENUNJUKKAN KETERHUBUNGAN ANTAR KOTA
             foreach (KeyValuePair<string, float> entry in peluang)
             {
-                if (check.Contains(entry.Key))
+                if (check.ContainsKey(entry.Key))
                 {
                     // KALAU HUBUNGAN KOTA 1 DENGAN TETANGGANYA SUDAH TERINFEKSI, BERI GARIS MERAH
                     graf.AddEdge(entry.Key.Split('>')[0], entry.Key.Split('>')[1]).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
@@ -217,12 +220,19 @@ namespace Tubes_Stima_2
             // TAMPILKAN GRAF
             viewer.Graph = graf;
             Form showgraph = new Form();
+            showgraph.Size = new System.Drawing.Size(1000, 1000);
             showgraph.SuspendLayout();
             viewer.Dock = DockStyle.Fill;
             showgraph.Controls.Add(viewer);
             showgraph.ResumeLayout();
             showgraph.ShowDialog();
+            Window2 ShowGraph = new Window2();
+            ShowGraph.ShowDialog();
         }
+        // FUNGSI LOGISTIK : (float)populasi * prob / (1 + (populasi - 1) * Math.Pow(Math.E, -0.25 * totalhari))
+        // FUNGSI LOGISTIK : (float)populasi / (1 + (populasi - 1) * Math.Pow(Math.E, -0.25 * waktusampai)) * prob
+        // FUNGSI LINEAR : ((float)(totalhari * populasi) / 20) * prob
+        // FUNGSI LINEAR : ((float)(waktusampai * populasi) / 20) * prob
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
