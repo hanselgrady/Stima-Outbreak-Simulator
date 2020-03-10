@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tubes_Stima_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="573.529" Width="1030.523">
+        Title="MainWindow" Height="680" Width="1030.523">
     <Grid OpacityMask="White" Margin="-3,-1,-3,-3" RenderTransformOrigin="0.5,0.5">
         <Grid.Background>
             <ImageBrush ImageSource="virus.jpg" Stretch="UniformToFill"/>
@@ -19,23 +19,33 @@
             </TransformGroup>
         </Grid.RenderTransform>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1030"/>
+            <ColumnDefinition Width="687.622"/>
+            <ColumnDefinition Width="342.378"/>
         </Grid.ColumnDefinitions>
-        <Label Content="File 1 :" HorizontalAlignment="Left" Height="53" Margin="7,142,0,0" VerticalAlignment="Top" Width="91" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="24" TextOptions.TextFormattingMode="Display" Foreground="White"/>
-        <Label Content="File 2 :" HorizontalAlignment="Left" Height="50" Margin="7,231,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="24" TextOptions.TextFormattingMode="Display" Foreground="White"/>
-        <Rectangle HorizontalAlignment="Left" Height="20" Margin="-1,137,-3,0" VerticalAlignment="Top" Width="1034" Fill="Black"/>
-        <TextBox Name="Directory1" HorizontalAlignment="Left" Height="42" Margin="7,201,0,0" Text="File Location" VerticalAlignment="Top" Width="842" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti" IsReadOnly="True"/>
-        <TextBox Name="Directory2" HorizontalAlignment="Left" Height="42" Margin="12,290,0,0" Text="File Location&#xD;&#xA;" VerticalAlignment="Top" Width="842" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti" IsReadOnly="True" AllowDrop="False"/>
-        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="8" Margin="8,188,0,0" VerticalAlignment="Top" Width="842"/>
-        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="8" Margin="10,276,0,0" VerticalAlignment="Top" Width="842"/>
-        <Button x:Name="Browse1" Content="Browse File" HorizontalAlignment="Left" Height="51" Margin="881,196,0,0" VerticalAlignment="Top" Width="133" FontSize="20" FontFamily="Kozuka Mincho Pro H" Click="Browse1_Click"/>
-        <Button x:Name="Browse2" Content="Browse File" HorizontalAlignment="Left" Height="51" Margin="883,283,0,0" VerticalAlignment="Top" Width="133" Click="Browse2_Click" FontSize="20" FontFamily="Kozuka Mincho Pro H"/>
-        <Button x:Name="ShowGraph" Content="Show Graph" HorizontalAlignment="Left" Height="76" Margin="83,451,0,0" VerticalAlignment="Top" Width="197" FontSize="24" FontFamily="Kozuka Mincho Pro H" Click="ShowGraph_Click"/>
-        <Button x:Name="Clear" Content="Clear" HorizontalAlignment="Left" Height="76" Margin="421,451,0,0" VerticalAlignment="Top" Width="197" FontSize="24" Click="Button_Click" FontFamily="Kozuka Mincho Pro H"/>
-        <Button x:Name="Credits" Content="Credits" HorizontalAlignment="Left" Height="76" Margin="737,450,0,0" VerticalAlignment="Top" Width="197" FontSize="24" FontFamily="Kozuka Mincho Pro H" Click="Credits_Click"/>
-        <Label Content="Jumlah Hari :" HorizontalAlignment="Left" Height="50" Margin="8,319,0,0" VerticalAlignment="Top" Width="228" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="24" TextOptions.TextFormattingMode="Display" Foreground="White"/>
-        <TextBox x:Name="Query" HorizontalAlignment="Left" Height="42" Margin="12,380,0,0" VerticalAlignment="Top" Width="1001" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti"/>
-        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="8" Margin="11,367,0,0" VerticalAlignment="Top" Width="1003"/>
+        <Label Content="File 1 :" HorizontalAlignment="Left" Height="53" Margin="6,81,0,0" VerticalAlignment="Top" Width="91" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="24" TextOptions.TextFormattingMode="Display" Foreground="White"/>
+        <Label Content="File 2 :" HorizontalAlignment="Left" Height="50" Margin="6,170,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="24" TextOptions.TextFormattingMode="Display" Foreground="White"/>
+        <Rectangle HorizontalAlignment="Left" Height="20" Margin="-2,76,-2,0" VerticalAlignment="Top" Width="1034" Fill="Black" Grid.ColumnSpan="2"/>
+        <TextBox Name="Directory1" HorizontalAlignment="Left" Height="42" Margin="6,140,0,0" Text="File Location" VerticalAlignment="Top" Width="842" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti" IsReadOnly="True" Grid.ColumnSpan="2"/>
+        <TextBox Name="Directory2" HorizontalAlignment="Left" Height="42" Margin="11,229,0,0" Text="File Location&#xD;&#xA;" VerticalAlignment="Top" Width="842" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti" IsReadOnly="True" AllowDrop="False" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="8" Margin="7,127,0,0" VerticalAlignment="Top" Width="842" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="8" Margin="9,215,0,0" VerticalAlignment="Top" Width="842" Grid.ColumnSpan="2"/>
+        <Button x:Name="Browse1" Content="Browse File" HorizontalAlignment="Left" Height="51" Margin="192.667,135,0,0" VerticalAlignment="Top" Width="133" FontSize="20" FontFamily="Kozuka Mincho Pro H" Click="Browse1_Click" Grid.Column="1"/>
+        <Button x:Name="Browse2" Content="Browse File" HorizontalAlignment="Left" Height="51" Margin="194.667,222,0,0" VerticalAlignment="Top" Width="133" Click="Browse2_Click" FontSize="20" FontFamily="Kozuka Mincho Pro H" Grid.Column="1"/>
+        <Button x:Name="ShowGraph" Content="Show Graph" HorizontalAlignment="Left" Height="76" Margin="175,563,0,0" VerticalAlignment="Top" Width="197" FontSize="24" FontFamily="Kozuka Mincho Pro H" Click="ShowGraph_Click"/>
+        <Button x:Name="Clear" Content="Clear" HorizontalAlignment="Left" Height="76" Margin="413,562,0,0" VerticalAlignment="Top" Width="197" FontSize="24" Click="Button_Click" FontFamily="Kozuka Mincho Pro H"/>
+        <Button x:Name="Credits" Content="Credits" HorizontalAlignment="Left" Height="76" Margin="655,561,0,0" VerticalAlignment="Top" Width="197" FontSize="24" FontFamily="Kozuka Mincho Pro H" Click="Credits_Click" Grid.ColumnSpan="2"/>
+        <Label Content="Jumlah Hari :" HorizontalAlignment="Left" Height="50" Margin="7,258,0,0" VerticalAlignment="Top" Width="228" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="24" TextOptions.TextFormattingMode="Display" Foreground="White"/>
+        <TextBox x:Name="Query" HorizontalAlignment="Left" Height="42" Margin="11,319,0,0" VerticalAlignment="Top" Width="1001" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="8" Margin="10,306,0,0" VerticalAlignment="Top" Width="1003" Grid.ColumnSpan="2"/>
+        <Button Content="Prev" HorizontalAlignment="Left" Height="76" Margin="37,560,0,0" VerticalAlignment="Top" Width="85" FontSize="24" FontFamily="Kozuka Mincho Pro H" Click="Button_Click_Prev" />
+        <Button Content="Next" HorizontalAlignment="Left" Height="76" Margin="208.667,562,0,0" VerticalAlignment="Top" Width="85" FontSize="24" FontFamily="Kozuka Mincho Pro H" Click="Button_Click_Next" Grid.Column="1" />
+        <Label Content="Urutan Pengecekan :" HorizontalAlignment="Left" Height="50" Margin="8,347,0,0" VerticalAlignment="Top" Width="261" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="24" TextOptions.TextFormattingMode="Display" Foreground="White"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="8" Margin="11,395,0,0" VerticalAlignment="Top" Width="1003" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="UrutanCek" HorizontalAlignment="Left" Height="42" Margin="11,409,0,0" Text="" VerticalAlignment="Top" Width="999" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti" IsReadOnly="True" AllowDrop="False" Grid.ColumnSpan="2"/>
+        <Label Content="Urutan Penyebaran :" HorizontalAlignment="Left" Height="50" Margin="8,436,0,0" VerticalAlignment="Top" Width="261" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="24" TextOptions.TextFormattingMode="Display" Foreground="White"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="8" Margin="14,485,0,0" VerticalAlignment="Top" Width="1003" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="UrutanSebar" HorizontalAlignment="Left" Height="42" Margin="13,499,0,0" Text="" VerticalAlignment="Top" Width="999" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Mongolian Baiti" IsReadOnly="True" AllowDrop="False" Grid.ColumnSpan="2"/>
+        <Label Content="Virus.Inc" HorizontalAlignment="Left" Height="72" Margin="413,-4,0,0" VerticalAlignment="Top" Width="227" FontWeight="Bold" FontStyle="Italic" FontFamily="Kozuka Mincho Pr6N H" FontSize="40" TextOptions.TextFormattingMode="Display" Foreground="White"/>
 
     </Grid>
 </Window>

@@ -73,7 +73,9 @@ namespace Tubes_Stima_2
         private void Credits_Click(object sender, RoutedEventArgs e)
         {
             Window1 CreditWindow = new Window1();
+            this.Hide();
             CreditWindow.Show();
+            this.Show();
         }
 
         private void ShowGraph_Click(object sender, RoutedEventArgs e)
@@ -90,7 +92,7 @@ namespace Tubes_Stima_2
             // BUAT ANTRIAN SIMPUL HIDUP
             ArrayList queue = new ArrayList();
             // BUAT ANTRIAN HUBUNGAN KOTA YANG BERHASIL DISEBAR
-            Dictionary<string, int> check = new Dictionary<string, int>();
+            ArrayList check = new ArrayList();
 
             // FILE 1 : PETA SELURUH DUNIA
             string line;
@@ -103,8 +105,6 @@ namespace Tubes_Stima_2
                 if (first)
                 {
                     first = false;
-                    // BUAT PATOKAN JUMLAH 
-                    int numRel = int.Parse(line);
                 }
                 else
                 {
@@ -125,6 +125,8 @@ namespace Tubes_Stima_2
                     first = false;
                     string firstCity = line.Split()[1];
                     waktu.Add(firstCity, 0);
+                    UrutanSebar.Text = firstCity + " (0)";
+                    UrutanCek.Text = "";
                     foreach(KeyValuePair<string, float> entry in peluang)
                     {
                         // CEK KALO ADA YG SESUAI
@@ -164,17 +166,17 @@ namespace Tubes_Stima_2
                 // KALAU TERSEBAR
                 if ((float)populasi * prob / (1 + (populasi - 1) * Math.Pow(Math.E, -0.25 * totalhari)) > 1)
                 {
-                    // KALAU TARGET BELUM TERINFEKSI
                     // CARI KAPAN PENYEBARANNYA
                     int waktusampai = 1;
                     while ((float)populasi * prob / (1 + (populasi - 1) * Math.Pow(Math.E, -0.25 * waktusampai)) <= 1)
                     {
                         waktusampai++;
                     }
-                    check.Add(temp1, waktusampai);
-                    // TAMBAHKAN ELEMEN
+                    check.Add(temp1);
+                    // TAMBAHKAN ELEMEN KALAU TARGET BELUM TERINFEKSI
                     if (waktu[target] == -999) {
                         waktu[target] = waktu[source] + waktusampai;
+                        UrutanSebar.Text = UrutanSebar.Text + ", " + target + " (" + waktu[target].ToString() + ")";
                         foreach (KeyValuePair<string, float> entry in peluang)
                         {
                             // CEK KALO ADA YG SESUAI
@@ -185,6 +187,11 @@ namespace Tubes_Stima_2
                             }
                         }
                     }
+                }
+                UrutanCek.Text = UrutanCek.Text + temp1;
+                if (queue.Count != 0)
+                {
+                    UrutanCek.Text = UrutanCek.Text + ", ";
                 }
             }
             // BUAT GRAF SESUAI DATA YANG TERSEDIA
@@ -206,7 +213,7 @@ namespace Tubes_Stima_2
             // BERI PANAH YANG MENUNJUKKAN KETERHUBUNGAN ANTAR KOTA
             foreach (KeyValuePair<string, float> entry in peluang)
             {
-                if (check.ContainsKey(entry.Key))
+                if (check.Contains(entry.Key))
                 {
                     // KALAU HUBUNGAN KOTA 1 DENGAN TETANGGANYA SUDAH TERINFEKSI, BERI GARIS MERAH
                     graf.AddEdge(entry.Key.Split('>')[0], entry.Key.Split('>')[1]).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
@@ -226,8 +233,6 @@ namespace Tubes_Stima_2
             showgraph.Controls.Add(viewer);
             showgraph.ResumeLayout();
             showgraph.ShowDialog();
-            Window2 ShowGraph = new Window2();
-            ShowGraph.ShowDialog();
         }
         // FUNGSI LOGISTIK : (float)populasi * prob / (1 + (populasi - 1) * Math.Pow(Math.E, -0.25 * totalhari))
         // FUNGSI LOGISTIK : (float)populasi / (1 + (populasi - 1) * Math.Pow(Math.E, -0.25 * waktusampai)) * prob
@@ -236,14 +241,43 @@ namespace Tubes_Stima_2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Directory1.Text = "";
-            Directory2.Text = "";
+            Directory1.Text = "File Location";
+            Directory2.Text = "File Location";
             Query.Text = "";
+            UrutanCek.Text = "";
+            UrutanSebar.Text = "";
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             
+        }
+
+        private void Button_Click_Prev(object sender, RoutedEventArgs e)
+        {
+            if (Query.Text == "")
+            {
+                Query.Text = "0";
+            }
+            else
+            {
+                if (int.Parse(Query.Text) - 1 >= 0)
+                {
+                    Query.Text = (int.Parse(Query.Text) - 1).ToString();
+                }
+            }
+        }
+
+        private void Button_Click_Next(object sender, RoutedEventArgs e)
+        {
+            if (Query.Text != "")
+            {
+                Query.Text = (int.Parse(Query.Text) + 1).ToString();
+            }
+            else
+            {
+                Query.Text = "0";
+            }
         }
     }
 }

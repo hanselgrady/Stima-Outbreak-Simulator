@@ -19,6 +19,9 @@
         <Label Content="13518140" HorizontalAlignment="Left" Height="53" Margin="338,308,0,0" VerticalAlignment="Top" Width="189" FontWeight="Bold" Foreground="White" FontSize="18" FontFamily="Kozuka Mincho Pro H"/>
         <Label Content="13518059" HorizontalAlignment="Left" Height="53" Margin="76,303,0,0" VerticalAlignment="Top" Width="189" FontWeight="Bold" Foreground="White" FontSize="18" FontFamily="Kozuka Mincho Pro H"/>
         <Label Content="13518077" HorizontalAlignment="Left" Height="53" Margin="607,305,-2.667,0" VerticalAlignment="Top" Width="189" FontWeight="Bold" Foreground="White" FontSize="18" FontFamily="Kozuka Mincho Pro H"/>
+        <Image Source="F:\College Things\Programming\Trying\C#\Tubes 2 Stima\Tubes Stima 2\images\780px-Biohazard_symbol_(yellow).svg.png" HorizontalAlignment="Left" Height="185" Margin="304,76,0,0" VerticalAlignment="Top" Width="196"/>
+        <Image Source="F:\College Things\Programming\Trying\C#\Tubes 2 Stima\Tubes Stima 2\images\161-1614671_the-daiichi-nuclear-reactor-in-fukushima-continues-nuclear.png" HorizontalAlignment="Left" Height="185" Margin="572,70,0,0" VerticalAlignment="Top" Width="196"/>
+        <Image Source="F:\College Things\Programming\Trying\C#\Tubes 2 Stima\Tubes Stima 2\images\58d29dc1dc164e9dd9e668c1.png" HorizontalAlignment="Left" Height="185" Margin="23,77,0,0" VerticalAlignment="Top" Width="196"/>
 
     </Grid>
 </Window>
