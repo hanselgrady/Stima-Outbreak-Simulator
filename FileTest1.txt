@@ -1,0 +1,9 @@
+8
+Amsterdam Beijing 0.2
+Amsterdam Copenhagen 0.05
+Beijing Amsterdam 0.5
+Beijing Djenne 0.75
+Copenhagen Amsterdam 0.1
+Copenhagen Beijing 0.1
+Djenne Amsterdam 0.5
+Djenne Copenhagen 0.1

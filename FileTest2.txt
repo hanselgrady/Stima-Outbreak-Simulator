@@ -1,0 +1,5 @@
+4 Amsterdam
+Amsterdam 1000
+Beijing 5000
+Copenhagen 1000
+Djenne 1000
